@@ -239,4 +239,4 @@ Jekyll支持`markdown`格式有额外渲染器
 
 文章保存于`_post`文件夹中，文件名称以`YYYY-MM-DD-Title.MARKUP`格式，并且包含YAML头的文件都会转换成HTML格式
 
-
+#### 下载及图片引用
