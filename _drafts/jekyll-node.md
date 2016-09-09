@@ -54,6 +54,8 @@ cd mysite
 bundle install
 bundle exec jeklly serve
 
+gem install jekyll-redirect-from
+
 ### Usage
 #### Jekyll Commond
 
