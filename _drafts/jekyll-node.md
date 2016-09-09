@@ -240,3 +240,39 @@ Jekyll支持`markdown`格式有额外渲染器
 文章保存于`_post`文件夹中，文件名称以`YYYY-MM-DD-Title.MARKUP`格式，并且包含YAML头的文件都会转换成HTML格式
 
 #### 下载及图片引用
+
+- picture to show
+
+```
+![picture]({{ site.url }}/assert/images/png/player.png)
+```
+
+- file to download
+
+```
+[filename]({{ site.url }}/download/filename)
+```
+
+#### Display Posts
+
+Thx for Liquid templete language. You can display posts in following way:
+```
+<ul>
+	{% for post in site.posts %}
+	# for contents
+		<li>
+			<a href="{{ post.url }}">{{ post.title }}</a>
+		</li>
+	{% endfor %}
+</ul>
+```
+
+if u want to use current page variable, you can user `{{ page.xxx }}` invole.
+
+Of course, you have full control over how (where) to display u posts, but u need to read template section carefully.
+
+
+
+
+
+
