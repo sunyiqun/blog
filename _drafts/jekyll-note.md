@@ -273,8 +273,88 @@ if u want to use current page variable, you can user `{{ page.xxx }}` invole.
 
 Of course, you have full control over how (where) to display u posts, but u need to read template section carefully.
 
+#### Post excerpt
+
+文章摘要 jekyll文章可以通过post.excerpt进行预览 如果文章自身没有特定 则会抓取第一章节内容
+
+或者可以通过在YAML头中定义`excerpt`或者`excerpt_separator`来定制
 
 
+```
+---
+excerpt: "For markdown display"
+---
+```
 
+or
+
+```
+---
+excerpt_separator: <!--more-->
+---
+
+Excerpt
+<!--more-->
+Out-of-excerpt
+```
+
+你也在_config.xml中定义`excerpt_separator`，注意该值不能为空
+
+同时，对于由 Liquid 标签输出的内容，你可以通过| strip_html过滤器来移除输出内容中的html标签。这在某些场景，如在你博文的head中生成meta="description"，以及其他html标签与内容不应混杂的场景下很有帮助。？
+
+#### 代码高亮
+
+Pygments 或 Rouge 
+
+如下为Pygments语法 语法支持以下
+ASP
+Assembly
+Awk
+Basic
+C
+C#
+C++
+Cython
+Emacs-Lisp
+Erlang
+Forth
+Fortran
+Haskell
+Java
+JavaScript
+Lisp
+Objective C
+Other
+Other Scripting Engines
+PHP
+PL/SQL
+Pascal
+Perl
+Prolog
+Python
+Rexx
+Ruby
+SQL
+Scheme
+Tcl
+Unix Shell
+Visual
+Basic
+YACC
+Zope
+
+```
+{% highlight ruby linenos %}
+{% endhighlight %}
+```
+
+### Drafts
+
+草稿，就是放在`_drafts`目录下
+```
+|-- _drafts/
+|   |-- a-draft-post.md
+```
+可以通过--drafts参数传递给`jekyll build`或者`jekyll serve`时，可以自动附加时间用来预览，然而并没有看到
 
 

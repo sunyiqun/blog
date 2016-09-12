@@ -3,6 +3,7 @@ layout: post
 title:  "Jekyll Test"
 date:   2016-09-09 16:35:36 +0800
 categories: other
+excerpt: "For markdown display"
 ---
 
 ## Test
@@ -41,5 +42,37 @@ abc
 
 ![pikachu]({{ site.baseurl }}/assets/images/188915-pokemon-go/png/pikachu.png)
 
+
+### Code
+
+---
+
+{% highlight bash linenos %}
+cd ~
+for f in $(ls); do
+	readlink -f $f;
+done
+{% endhighlight %}
+
+{% highlight c linenos %}
+#include <stdio.h>
+
+int main()
+{
+	return 0;
+}
+{% endhighlight %}
+
+{% highlight php linenos %}
+<?php
+header('Content-Type: application/json');
+
+echo json_encode(array(
+    'jsonrpc' => "2.0",
+    'result' => $result,
+    'id' => $request->id,
+    'error' => null
+));
+{% endhighlight %}
 
 
