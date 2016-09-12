@@ -31,9 +31,10 @@ abc
 
 ---
 
+|1|2|3|
 |:---|:---:|---:|
 |1111111111|2222222222|3333333333|
-|a|b|c
+|a|b|c|
 
 
 ### Picture
@@ -74,5 +75,16 @@ echo json_encode(array(
     'error' => null
 ));
 {% endhighlight %}
+
+### Var
+
+|key|value|
+|:---|:---|
+|`site.time`| {{ site.time }} |
+|`foreach site.pages`| PAGES={% for page in site.pages %}{{ page.url}}:{% endfor %} |
+|`foreach site.posts`| POSTS={% for post in site.posts %}{{ post.url}}:{% endfor %} |
+|`foreach site.related_posts`| RELATE={% for post in site.related_posts %}{{ post.url }}:{% endfor %} |
+|`foreach site.static_files`| STATIC={% for static in site.static_files %}{{ static.url }}:{% endfor %} |
+
 
 

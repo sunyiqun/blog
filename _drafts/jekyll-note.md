@@ -358,3 +358,49 @@ Zope
 可以通过--drafts参数传递给`jekyll build`或者`jekyll serve`时，可以自动附加时间用来预览，然而并没有看到
 
 
+### 创建页面
+
+创建html文件，可以以路径名称命令html文件，以可以创建对应目录，在对应目录下创建
+
+或者通过YAML头文件中permalink重定向
+
+## 变量
+
+### 全局变量
+
+- site
+
+来自_config.yml文件全站信息与配置
+
+|变量|说明|
+|:---|:---|
+|site.time|当前时间(Jekyll执行时间)|
+|site.pages|所有 Pages 的清单|
+|site.posts|一个按照时间倒序的所有 Posts 的清单|
+|site.related_posts|如果当前被处理的页面是一个 Post，这个变量就会包含最多10个相关的 Post。默认的情况下，相关性是低质量的，但是能被很快的计算出来。如果你需要高相关性，就要消耗更多的时间来计算。用 jekyll 这个命令带上 --lsi (latent semantic indexing) 选项来计算高相关性的 Post。注意，GitHub 在生成站点时不支持　lsi。|
+|site.static_files|静态文件的列表 (此外的文件不会被 Jekyll 和 Liquid 处理。)。每个文件都具有三个属性： path， modified_time 以及 extname。|
+|site.html_pages|‘site.pages’的子集，存储以‘.html’结尾的部分。|
+|site.html_files|‘site.static_files’的子集，存储以‘.html’结尾的部分。|
+|site.collections|一个所有集合（collection）的清单。|
+|site.data|一个存储了 _data 目录下的YAML文件数据的清单。|
+|site.documents|每一个集合（collection）中的全部文件的清单。|
+|site.categories.CATEGORY|所有的在 CATEGORY 类别下的帖子。|
+|site.tags.TAG|所有的在 TAG 标签下的帖子。|
+|site.[CONFIGURATION_DATA]|所有的通过命令行和 _config.yml 设置的变量都会存到这个 site 里面。 举例来说，如果你设置了 url: http://mysite.com 在你的配置文件中，那么在你的 Posts 和 Pages 里面，这个变量就被存储在了 site.url。Jekyll 并不会把对 _config.yml 做的改动放到 watch 模式，所以你每次都要重启 Jekyll 来让你的变动生效。|
+
+### 静态文件
+
+单纯文件，可以通过`site.static_file`在页面中访问，还可以访问该文件的
+
+|var_name|description|
+|---|---|
+|file.path|文件的相对路径|
+|file.modified_time|文件的最后修改时间|
+|file.extname|文件的扩展名，如 image.jpg 中的 .jpg|
+
+### 常用变量
+
+全局变量
+
+
+
