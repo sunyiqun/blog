@@ -81,10 +81,29 @@ echo json_encode(array(
 |key|value|
 |:---|:---|
 |`site.time`| {{ site.time }} |
-|`foreach site.pages`| PAGES={% for page in site.pages %}{{ page.url}}:{% endfor %} |
-|`foreach site.posts`| POSTS={% for post in site.posts %}{{ post.url}}:{% endfor %} |
-|`foreach site.related_posts`| RELATE={% for post in site.related_posts %}{{ post.url }}:{% endfor %} |
-|`foreach site.static_files`| STATIC={% for static in site.static_files %}{{ static.url }}:{% endfor %} |
+|`foreach site.pages url`| PAGES={% for page in site.pages %}{{ page.url}}:{% endfor %} |
+|`foreach site.posts url`| POSTS={% for post in site.posts %}{{ post.url}}:{% endfor %} |
+|`foreach site.related_posts url`| RELATE={% for post in site.related_posts %}{{ post.url }}:{% endfor %} |
+|`foreach site.static_files path`| STATIC={% for static in site.static_files %}{{ static.path }}:{% endfor %} |
+|`foreach site.html_pages`| ... |
+|`site.html_files`| ... |
+|`site.collections`| ... |
+|`site.data`| ... |
+|`site.documents`| ... |
+|`site.categories.test url`| TEST={% for test in site.categories.test %}{{ test.url }}:{% endfor %} |
+|`site.tags.TAG`| ... |
+|`site.url`| {{ site.url }} |
 
-
-
+|key|value|
+|:---|:---|
+|page.content| all content |
+|page.title| {{ page.titile }} |
+|page.excerpt| {{ page.excerpt }} |
+|page.url| {{ page.url }} |
+|page.date| {{ page.date }} |
+|page.id| {{ page.id }} |
+|page.categories| {{ page.categories }} |
+|page.tags| {{ page.tags }} |
+|page.path| {{ page.path}} |
+|page.next| {{ page.next }} |
+|page.previous| {{ page.preious }} |
