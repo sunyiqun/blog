@@ -107,7 +107,7 @@ gem install jekyll-redirect-from
 
 - _includes
 
-保存方便重用的文件，可以通过`{% include file.ext %}`将`_include/file.ext`文件包含进来
+保存方便重用的文件，可以通过{% raw %}`{% include file.ext %}`{% endraw %}将`_include/file.ext`文件包含进来
 
 - _layouts
 
@@ -167,9 +167,11 @@ gem install jekyll-redirect-from
 
 ### 环境变量
 
+{% raw %}
 {% if jekyll.environment == "production" %}
 	{% include disqus.html %}
 {% endif %}
+{% endraw %}
 
 通过`JEKYLL_ENV=production jekyll build`传入
 JEKYLL_ENV模式值是development
