@@ -1,14 +1,23 @@
 ---
 layout: default
 ---
+<!--
 <html>
   <body>
-    <div class="container">
+-->
+
+    <div class="container bs-docs-container">
       <div class="row">
-        <div class="col-sm-8 blog-main">
+        <div class="col-md-2" role="complementary">
+          <nav class="bs-docs-sidebar hidden-print hidden-sm hidden-xs affix-top">
+            <ul class="nav bs-docs-sidenav">
+            </ul>
+          </nav>
+        </div>
+        <div class="col-md-8" role="main">
 {{ content }}
         </div>
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        <div class="col-md-2" role="complementary">
           <div class="sidebar-module">
             <h4>Archives</h4>
             <ol class="list-unstyled">
@@ -18,5 +27,8 @@ layout: default
         </div>
       </div>
     </div>
+
+<!--
   </body>
 </html>
+-->

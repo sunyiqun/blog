@@ -1,7 +1,8 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2016-07-08 09:36:25 +0800
+title:  Jekyll docs
+date:   2016-09-14 09:36:25 +0800
+excerpt: jekyll guide
 categories:
   - guides
 tags:

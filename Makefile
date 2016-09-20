@@ -10,3 +10,6 @@ help:
 
 update-github-page:
 	@gem update github-pages
+
+start:
+	bundle exec jekyll serve --host 0.0.0.0 --drafts
