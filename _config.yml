@@ -18,6 +18,7 @@ includes_dir:   _includes
 
 # env
 timezone:       Asia/Hong_Kong
+future:         true
 
 # Handling Reading
 safe:           false
