@@ -4,6 +4,7 @@ date: 2016-09-19 10:00:00 +0800
 title: SSL Note
 excerpt: SSL Note
 categories:
+  - blog
   - guides
 tags:
   - protocal
@@ -178,3 +179,35 @@ TLSv1 Record Layer: Handshake Protocol: Encrypted Handshake Message
 - Version: TLS 1.0 (0x0301)
 - Length: 48
 - Handshake Protocol: Encrypted Handshake Message
+
+---
+
+<table class="table table-bordered">
+{% capture table %}
+
+|\#handshake |client||server|
+|---|---|:---:|---|
+|client hello - client|- Key-C<br />- Cert-C<br />- Ca-C<br />+ Random-C (create)|-><br />Random-C<br />Support TLS version<br />Support Cipher<br />Support Compression|- Key-S<br />- Cert-S<br />- Ca-S|
+|client hello - server|- Key-C<br />- Cert-C<br />- Ca-C<br />- Random-C||- Key-S<br />- Cert-S<br />- Ca-S<br />+ Random-C (accept)|
+|server hello - server|- Key-C<br />- Cert-C<br />- Ca-C<br />- Random-C|<-<br />Random-S<br />Select TLS version<br />Select Cipher (Kx Au Enc Mac)<br />Select Compression|- Key-S<br />- Cert-S<br />- Ca-S<br />- Random-C<br />+ Random-S (create)|
+|server certificate - server|- Key-C<br />- Cert-C<br />- Ca-C<br />- Random-C<br />|<-<br />Cert-S|- Key-S<br />- Cert-S<br />- Ca-S<br />- Random-C <br />- Random-S|
+|server certificate request - server|- Key-C<br />- Cert-C<br />- Ca-C<br />- Random-C <br />|<-<br />Request Client Cert Type & Issue|- Key-S<br />- Cert-S<br />- Ca-S<br />- Random-C <br />- Random-S|
+|server server hello done - server|- Key-C<br />- Cert-C<br />- Ca-C<br />- Random-C <br />||- Key-S<br />- Cert-S<br />- Ca-S<br />- Random-C <br />- Random-S|
+|server hello - client|- Key-C<br />- Cert-C<br />+ Cert-S (accept)<br />- Ca-C<br />- Random-C <br />+ Random-S (accept)||- Key-S<br />- Cert-S<br />- Ca-S<br />- Random-C <br />- Random-S|
+||Server-Auth(Ca-C, Cert-S)|||
+|client certificate - client|- Key-C<br />- Cert-C<br />- Cert-S<br />- Ca-C<br />- Random-C <br />- Random-S<br />|-><br />Cert-C|- Key-S<br />- Cert-S<br />- Ca-S<br />- Random-C <br />- Random-S|
+|client key exchange - client|- Key-C<br />- Cert-C<br />- Cert-S<br />- Ca-C<br />- Random-C <br />- Random-S<br />+ PreMasterKey (create)|-><br />E-PreMasterKey (Ex(PreMasterKey, Cert-S))|- Key-S<br />- Cert-S<br />- Ca-S<br />- Random-C <br />- Random-S|
+|client certificate verify - client|- Key-C<br />- Cert-C<br />- Cert-S<br />- Ca-C<br />- Random-C <br />- Random-S<br />- PreMasterKey<br />+ MasterKey (Mac(PreMasterKey, Random-C, Random-S))<br />+ Keyblock (Mac(MasterKey, Random-C, Random-S))<br />+ Signature (Au(MasterKey, Message, Key-C))|-><br />Signature|- Key-S<br />- Cert-S<br />- Ca-S<br />- Random-C <br />- Random-S|
+||||Client-Auth(Ca-S, Cert-C)|
+|client certificate & key exchange - server|- Key-C<br />- Cert-C<br />- Cert-S<br />- Ca-C<br />- Random-C <br />- Random-S<br />- PreMasterKey ()<br />||- Key-S<br />- Cert-S<br />- Ca-S<br />- Random-C <br />- Random-S<br />+ PreMasterKey (accept ~Ex(E-PreMasterKey, Key-S))+ MasterKey (Mac(PreMasterKey, Random-C, Random-S))<br />+ Keyblock (Mac(MasterKey, Random-C, Random-S))<br />Signature (accept)|
+||||~Au(Signature, Cert-C)|
+{% endcapture %}
+{{ table | markdownify | remove: '<table>' | remove: '</table>' }}
+</table>
+
+
+## Reference
+
+[in2eps](http://www.in2eps.com/fo-ssl/tk-fo-ssl-ex01.html)
+
+

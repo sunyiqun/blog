@@ -4,6 +4,7 @@ title: jekyll + bootstrap theme examples
 date: 2016-09-13 16:00:00 +0800
 excerpt: bootstrap theme examples
 categories:
+  - blog
   - guides
 tag:
   - jekyll

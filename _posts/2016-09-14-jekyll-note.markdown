@@ -4,6 +4,7 @@ title:  Jekyll docs
 date:   2016-09-14 09:36:25 +0800
 excerpt: jekyll guide
 categories:
+  - blog
   - guides
 tags:
   - jekyll

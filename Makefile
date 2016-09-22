@@ -12,4 +12,4 @@ update-github-page:
 	@gem update github-pages
 
 start:
-	bundle exec jekyll serve --host 0.0.0.0 --drafts
+	bundle exec jekyll serve --drafts --host 0.0.0.0
