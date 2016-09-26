@@ -22,8 +22,7 @@ layout: default
         <div class="col-md-2" role="complementary">
           <div class="sidebar-module">
             <h4>Archives</h4>
-            <ol class="list-unstyled">
-              <ul class="list-group">
+            <ul class="list-group">
 {% assign posts = site.posts | sort: date | reverse %}
 {% assign p_date = false %}
 {% assign p_num = 0 %}
@@ -58,9 +57,7 @@ layout: default
     {% endif %}
   {% endif %}
 {% endfor %}
-	      </ul>
-              <li><a href="#">March 11</li>
-            </ol>
+	    </ul>
           </div>
         </div>
       </div>
