@@ -23,6 +23,42 @@ layout: default
           <div class="sidebar-module">
             <h4>Archives</h4>
             <ol class="list-unstyled">
+              <ul class="list-group">
+{% assign posts = site.posts | sort: date | reverse %}
+{% assign p_date = false %}
+{% assign p_num = 0 %}
+{% for p in posts %}
+  {% if p == posts.last %}
+    {% if p_date == false %}
+      {% assign p_date = p.date %}
+      {% assign p_num = p_num | times: 0 | plus: 1 %}
+    {% else %}
+      {% capture old %}{{ p_date | date: '%Y-%m' }}{% endcapture %}
+      {% capture new %}{{ p.date | date: '%Y-%m' }}{% endcapture %}
+      {% if old == new %}
+        {% assign p_num = p_num | plus: 1 %}
+      {% else %}
+<li class="list-group-item"><span class="badge">{{ p_num }}</span>{{ p_date | date: "%Y-%m" }}</li>
+        {% assign p_date = p.date %}
+        {% assign p_num = p_num | times:0 | plus: 1 %}
+      {% endif %}
+<li class="list-group-item"><span class="badge">{{ p_num }}</span>{{ p_date | date: "%Y-%m" }}</li>
+    {% endif %}
+  {% else %}
+    {% capture old %}{{ p_date | date: '%Y-%m' }}{% endcapture %}
+    {% capture new %}{{ p.date | date: '%Y-%m' }}{% endcapture %}
+    {% if old == new %}
+      {% assign p_num = p_num | plus: 1 %}
+    {% else %}
+      {% if p_date != false %}
+<li class="list-group-item"><span class="badge">{{ p_num }}</span>{{ p_date | date: "%Y-%m" }}3</li>
+      {% endif %}
+      {% assign p_date = p.date %}
+      {% assign p_num = p_num | times: 0 | plus: 1 %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+	      </ul>
               <li><a href="#">March 11</li>
             </ol>
           </div>
