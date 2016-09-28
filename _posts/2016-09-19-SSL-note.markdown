@@ -5,7 +5,7 @@ title: SSL Note
 excerpt: SSL Note
 categories:
   - blog
-  - guides
+  - note
 tags:
   - protocal
 ---

@@ -1,9 +1,14 @@
 ---
 layout: post
 title:  "Jekyll Test"
-date:   2016-09-09 16:35:36 +0800
-categories: other
 excerpt: "For markdown display"
+categories:
+  - blog
+  - note
+tags:
+  - jekyll
+  - markdown
+date:   2016-09-09 16:35:36 +0800
 ---
 
 ## Test

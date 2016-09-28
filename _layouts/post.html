@@ -5,7 +5,6 @@ layout: default
 <html>
   <body>
 -->
-
     <div class="theme-padding">
     </div>
     <div class="container bs-docs-container">
@@ -20,7 +19,32 @@ layout: default
 {{ content }}
         </div>
         <div class="col-md-2" role="complementary">
-          <div class="sidebar-module">
+	  <div class="panel panel-default">
+	    <div class="panel-heading">
+	      <h3 class="panel-title">Tags</h3>
+	    </div>
+	    <div class="panel-body">
+	      <ul class="list-group">
+		{% include post_tags.liquid %}
+		{% for tag in my_tags %}
+		{% assign tag_size = tag | size %}
+		{% if tag_size > 0 %}
+		<li class="list-group-item">
+		  <span class="badge">{{ my_tags_posts.first | size }}</span>
+		  <span class="label label-success">{{ tag }}</span>
+		  <ul class="nav">
+		  {% for tag_post in my_tags_posts.first %}
+		  <li><a href="{{ site.baseurl | append: tag_post.url }}">{{ tag_post.title | truncate: 12, "..." }}</a></li>
+		  {% endfor %}
+		  </ul>
+		</li>
+		{% endif %}
+		{% assign my_tags_posts = my_tags_posts | shift %}
+		{% endfor %}
+	      </ul>
+	    </div>
+	  </div>
+	  <div class="sidebar-module">
             <h4>Archives</h4>
             <ul class="list-group">
 {% assign posts = site.posts | sort: date | reverse %}
@@ -37,7 +61,7 @@ layout: default
       {% if old == new %}
         {% assign p_num = p_num | plus: 1 %}
       {% else %}
-<li class="list-group-item"><span class="badge">{{ p_num }}</span>{{ p_date | date: "%Y-%m" }}</li>
+<li class="list-group-item"><span class="badge">{{ p_num }}</span><a href="#">{{ p_date | date: "%Y-%m" }}</a></li>
         {% assign p_date = p.date %}
         {% assign p_num = p_num | times:0 | plus: 1 %}
       {% endif %}
@@ -50,7 +74,7 @@ layout: default
       {% assign p_num = p_num | plus: 1 %}
     {% else %}
       {% if p_date != false %}
-<li class="list-group-item"><span class="badge">{{ p_num }}</span>{{ p_date | date: "%Y-%m" }}3</li>
+<li class="list-group-item"><span class="badge">{{ p_num }}</span>{{ p_date | date: "%Y-%m" }}</li>
       {% endif %}
       {% assign p_date = p.date %}
       {% assign p_num = p_num | times: 0 | plus: 1 %}
@@ -62,8 +86,43 @@ layout: default
         </div>
       </div>
     </div>
-
 <!--
   </body>
 </html>
 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

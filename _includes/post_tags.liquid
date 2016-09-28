@@ -1,0 +1,53 @@
+{% assign my_tags = site.emptyArray %}
+{% assign idx = 0 %}
+{% for p in site.posts %}
+  {% if p.tags.first %}
+    {% for tag in p.tags %}
+      {% assign idx = idx | minus: idx %}
+      {% for my_tag in my_tags %}
+        {% if my_tag == tag %}
+          {% break %}
+        {% endif %}
+        {% assign idx = idx | plus: 1 %}
+      {% endfor %}
+      {% assign tags_size = my_tags | size %}
+      {% if idx >= tags_size %}
+        {% assign my_tags = my_tags | push: tag %}
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    {% assign idx = idx | minus: idx %}
+    {% for my_tag in my_tags %}
+      {% if my_tag == p.tags %}
+        {% break %}
+      {% endif %}
+      {% assign idx = idx | plus: 1 %}
+    {% endfor %}
+    {% assign tags_size = my_tags | size %}
+    {% if idx >= tags_size %}
+      {% assign my_tags = my_tags | push: p.tags %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% assign my_tags_posts = site.emptyArray %}
+{% assign idx = idx | minus: idx %}
+{% for my_tag in my_tags %}
+  {% assign tmp_arr = site.emptyArray %}
+  {% for p in site.posts %}
+    {% if p.tags.first %}
+      {% for tag in p.tags %}
+        {% if tag == my_tag %}
+	  {% assign tmp_arr = tmp_arr | push: p %}
+	  {% break %}
+	{% endif %}
+      {% endfor %}
+    {% else %}
+      {% if p.tags == my_tag %}
+        {% assign tmp_arr = tmp_arr | push: p %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  {% assign my_tags_posts = my_tags_posts | push: tmp_arr %}
+{% endfor %}
+

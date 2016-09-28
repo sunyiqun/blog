@@ -23,8 +23,8 @@ future:         true
 # Handling Reading
 safe:           false
 include:        [".htaccess"]
-exclude:        []
-keep_files:     [".git", ".svn"]
+exclude:        ["_drafts/template.md"]
+keep_files:     [".git", ".svn", "assets", "dist"]
 encoding:       "utf-8"
 markdown_ext:   "markdown,mkdown,mkdn,mkd,md"
 
@@ -59,3 +59,5 @@ github_username:  jekyll
 # Build settings
 markdown: kramdown
 theme: minima
+
+emptyArray: []

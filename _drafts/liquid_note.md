@@ -2,11 +2,12 @@
 layout: post
 
 date: 2016-09-21 20:00:00 +0800
-title: Liquid Note
+title: Jekyll Liquid Note
 categories:
   - blog
-  - guides
-tag:
+  - note
+tags:
+  - jekyll
   - liquid
 ---
 
