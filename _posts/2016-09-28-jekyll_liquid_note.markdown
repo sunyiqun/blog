@@ -20,18 +20,25 @@ tags:
 - theme
   - include 
     - 格式 {% raw %}{% include '<include file>' %}{% endraw %}
-	- 被include的文件后缀为'.liquid'，该后缀可省略不写
     - 被include的文件会去访问其父文件声明的变量，可以通过{% raw %}{% include '<include file>', custom_var: 'apple', other_custom_var: 'banana' %}{% endraw %}方式为其声明变量
     - 被include的文件如果文件名与其中变量一直情况下，可以通过{% raw %}{% include 'color' with 'red' %}{% endraw %}
 
   - comment
-    - 格式 {% raw %}{% comment %}<comment contents>{% endcomment %}{% endraw %}
+    - 格式
+
+```
+{% raw %}
+{% comment %}<comment contents>{% endcomment %}
+{% endraw %}
+```
 
   - form
     - 自动生成form表单 略
 
   - paginate
     - 分页 暂时略
+
+{% comment %}{% for p in site.posts %}{{p}}{% endfor %}{% endcomment %}
 
 ### Filter
 
@@ -96,8 +103,23 @@ tags:
     - split 字符串以指定分隔符分割成数组
 	- uniq 去重
 	- concat 数组合并
-	- 
+	- push 压栈
+	- pop 将最后几位推出栈
+	- shift 移位
+	- unshift ?
+
+### Other
+
+- overwrite varitables
+
+```
+{% raw %}
+{% assign var = 0 %}
+{% assign var = var | plus: 1 %}
+{% endraw %}
+```
 
 ### reference
 
+- [talk.jekyllrb.com](https://talk.jekyllrb.com)
 - [shopify.com](https://help.shopify.com/themes/liquid)
