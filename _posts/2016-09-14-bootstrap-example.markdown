@@ -32,13 +32,28 @@ tags:
   </div>
 </div>
 
+{% highlight html %}
+{% raw %}
+<table class="table table-striped">
+{% capture table %}
+
+|\#|First|NameLast|NameUsername|
+|---:|:---|:---|:---|
+|1|Mark|Otto|@mdo|
+|2|Jacob|Thornton|@fat|
+|3|Larry|the Bird|@twitter|
+
+{% endcapture %}
+{{ table | markdownify | remove: '<table>' | remove: '</table>' }}
+</table>
+{% endraw %}
+{% endhighlight %}
+
 ### Thumbnails
 
 ---
 
-{% raw %}
 <img src="/blog/assets/images/188915-pokemon-go/png/pikachu.png" class="img-thumbnail" alt="pikachu" height="200" width="200">
-{% endraw %}
 
 ### Labels
 
